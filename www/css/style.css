@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+body {
+  font-family: 'Barrio', cursive;
+}
+
+.bar-stable {
+  background-color: #00ffe9 !important;
+}
