@@ -12,14 +12,14 @@ angular.module('starter.controllers', ['ngCordova'])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.video = video.all();
+  $scope.remove = function(video) {
+    Video.remove(video);
   };
 })
 
-.controller('ChatsCtrl', function($scope, $cordovaCapture, $http) {
-  
+.controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
+
   const vm = this;
 
   vm.testPost = function() {
