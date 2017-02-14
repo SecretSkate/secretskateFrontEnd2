@@ -2,6 +2,36 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate) {
 
+  $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+  $scope.doRefresh = function() {
+
+    console.log('Refreshing!');
+    $timeout( function() {
+      //simulate async response
+      $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+
+      //Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+
+    }, 1000);
+
+  };
+
+  $scope.checkTab = function(){
+    var active = $ionicTabsDelegate.selectedIndex();
+    if (active === 0){
+      $scope.doRefresh();
+    }
+    else{
+      $ionicTabsDelegate.select(2, true);
+    }
+  }
+
+  $scope.refresh = function() {
+    console.log("refresh");
+  }
+
   google.maps.event.addDomListener(window, 'load', function() {
     console.log("google");
      var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -26,8 +56,7 @@ angular.module('starter.controllers', ['ngCordova'])
  });
 })
 
-.controller('unused', function($scope, Chats) {
-  console.log("boo");
+.controller('tabs', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
