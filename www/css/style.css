@@ -5,9 +5,14 @@ body {
 }
 
 h1 {
-  
+
 }
 
 .bar-stable {
   background-color: #00ffe9 !important;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
 }
