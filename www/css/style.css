@@ -5,9 +5,13 @@ body {
 }
 
 h1 {
-  
+
 }
 
 .bar-stable {
   background-color: #00ffe9 !important;
+}
+
+#error{
+  color: red !important;
 }

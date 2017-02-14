@@ -5,19 +5,12 @@
     <!-- <button class="button" ng-click="captureVideo()">Take Picture</button> -->
     <button id="takeVideo">Take Video</button>
 		<div id="videoArea"></div>
-    <p>hi</p>
-    <form ng-submit="$ctrl.testPost()">
-    <p>
-        Category: <input ng-model="$ctrl.updateCategory" id="edit-category">
-    </p>
-    <p> Amount: <input ng-model="$ctrl.updateAmount" value="" id="edit-amount">
-    </p>
 
-    <p>
-        <button type="submit">test post</button>
-    </p>
-
-</form>
-<p ng-click="$ctrl.testPost()">hi</p>
+    <button class="button-balanced" ng-click="count = count + 1" ng-init="count=0">
+      +
+    </button>
+    <span>
+      Gnar: {{count}}
+    </span>
   </ion-content>
 </ion-view>
