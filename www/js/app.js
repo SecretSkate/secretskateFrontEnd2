@@ -53,6 +53,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     controller: 'MyCtrl'
   })
 
+  .state('videos', {
+  url: '/videos',
+  templateUrl: 'templates/signup.html',
+  controller: 'MyCtrl'
+  })
+
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
