@@ -13,7 +13,7 @@
                 class="form-control"
                 placeholder="John@skate"
                 required>
-                <div class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">
+                <div id="error" class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">
                   <p ng-show="myForm.email.$error.required">email is required.</p>
                 </div>
         </label>
@@ -49,7 +49,7 @@
         </label>
         <br>
         <div class="row">
-          <a ui-sref="profile" class="button button-royal col-50 col-offset-25" ng-disabled="myForm.$invalid">
+          <a ui-sref="profile" class="button button-dark col-50 col-offset-25" ng-disabled="myForm.$invalid">
             Log In
           </a>
         </div>
