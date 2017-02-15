@@ -4,16 +4,8 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state) {
-  console.log("hi");
-
-
-  $scope.refresh = function() {
-    console.log("refresh");
-    $state.reload()
-  }
 
   google.maps.event.addDomListener(window, 'load', function() {
-    console.log("google");
      var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
      var mapOptions = {
@@ -36,13 +28,12 @@ angular.module('starter.controllers', ['ngCordova'])
  });
 })
 
-.controller('unused', function($scope, video) {
-  console.log("boo");
-  $scope.video = video.all();
-  $scope.remove = function(video) {
-    Video.remove(video);
-  };
-})
+// .controller('unused', function($scope, video) {
+//   $scope.video = video.all();
+//   $scope.remove = function(video) {
+//     Video.remove(video);
+//   };
+// })
 
 .controller('VideoAllCtrl', function($scope){
   $scope.videos = [{
@@ -68,28 +59,20 @@ angular.module('starter.controllers', ['ngCordova'])
 $scope.upVote = function(currentVideo) {
   currentVideo.points += 1;
 }
-  console.log("WHAT THE FUCK");
 })
 
 
-
+//this is important
 .controller('MyCtrl', function($scope, $ionicHistory){
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
-  console.log("FUCKY OU uU UOU");
 })
 
 
 
 .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
-  console.log("hi");
-  const vm = this;
-  vm.testPost = function() {
 
-  }
-  function testPost() {
-  }
   document.addEventListener("deviceready", init, false);
   function init() {
 
