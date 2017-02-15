@@ -3,7 +3,14 @@
 
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate) {
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state) {
+  console.log("hi");
+
+
+  $scope.refresh = function() {
+    console.log("refresh");
+    $state.reload()
+  }
 
   google.maps.event.addDomListener(window, 'load', function() {
     console.log("google");
@@ -34,7 +41,6 @@ angular.module('starter.controllers', ['ngCordova'])
           alert("Thanks " + username);
       }
   })
-
 
 .controller('unused', function($scope, video) {
   console.log("boo");
