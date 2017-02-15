@@ -1,90 +1,62 @@
-<!-- <form novalidate name="form" ng-submit="$ctrl.signup()">
-
-</form>
-<div class="list padding signup">
-  <label class="item item-input item-stacked-label">
-    <span class="input-label">Username</span>
-    <input
-          id="username"
-          type="text"
-          name="username"
-          ng-model="$ctrl.post.username"
-          class="form-control"
-          placeholder="John@skate"
-          required>
-          <div ng-class="{'form-group': true, 'has-error': form.image_url.$invalid && form.image_url.$touched }" ng-show="myForm.username.$touched && myForm.username.$invalid">
-            <p ng-show="myForm.username.$error.required">email is required.</p>
-          </div>
-
-  </label>
-  <label class="item item-input item-stacked-label">
-    <span class="input-label">Password</span>
-    <input type="text" placeholder="Suhr">
-  </label>
-  <label class="item item-input item-stacked-label">
-    <span class="input-label">Email</span>
-    <input type="text" placeholder="john@suhr.com">
-  </label>
-</div> -->
 
 
 
 <ion-nav-view>
-<ion-view>
-  <form class="padding list signup" novalidate name='myForm' ng-submit="$ctrl.addUser()">
-  <div class="list">
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Email</span>
-      <input
-            id="email"
-            type="text"
-            name="email"
-            ng-model="$ctrl.post.email"
-            class="form-control"
-            placeholder="John@skate"
-            required>
-            <div class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">
-              <p ng-show="myForm.email.$error.required">email is required.</p>
-            </div>
-    </label>
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Username</span>
-      <input
-            id="username"
-            type="text"
-            name="username"
-            ng-model="$ctrl.post.username"
-            class="form-control"
-            placeholder="John"
-            ng-minlength="4"
-            required>
-            <div class="error" ng-show="myForm.username.$touched && myForm.username.$invalid">
-              <p ng-show="myForm.username.$error.required">Title is required.</p>
-            </div>
-    </label>
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Password</span>
-      <input
-            id="password"
-            type="password"
-            name="password"
-            ng-model="$ctrl.post.password"
-            class="form-control"
-            placeholder="password"
-            ng-minlength="8"
-            required>
-            <div class="error" ng-show="myForm.password.$touched && myForm.password.$invalid">
-              <p ng-show="myForm.password.$error.required"> Password required.</p>
-            </div>
-    </label>
-    <br>
-    <div class="row">
-      <button ui-sref="profile" class="button button-royal col-50 col-offset-25" ng-disabled="myForm.$invalid">
-        Log In
-      </button>
-    </div>
-
-  </div>
-</form>
-</ion-view>
+  <ion-view>
+      <form class="padding list signup" novalidate name='myForm' ng-submit="$ctrl.addUser()">
+      <div class="list">
+        <a class="button icon ion-home" href="#/tab/tab-dash"> Home</a>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input
+                id="email"
+                type="text"
+                name="email"
+                ng-model="$ctrl.post.email"
+                class="form-control"
+                placeholder="John@skate"
+                required>
+                <div class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">
+                  <p ng-show="myForm.email.$error.required">email is required.</p>
+                </div>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Username</span>
+          <input
+                id="username"
+                type="text"
+                name="username"
+                ng-model="$ctrl.post.username"
+                class="form-control"
+                placeholder="John"
+                ng-minlength="4"
+                required>
+                <div class="error" ng-show="myForm.username.$touched && myForm.username.$invalid">
+                  <p ng-show="myForm.username.$error.required">Title is required.</p>
+                </div>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Password</span>
+          <input
+                id="password"
+                type="password"
+                name="password"
+                ng-model="$ctrl.post.password"
+                class="form-control"
+                placeholder="password"
+                ng-minlength="8"
+                required>
+                <div class="error" ng-show="myForm.password.$touched && myForm.password.$invalid">
+                  <p ng-show="myForm.password.$error.required"> Password required.</p>
+                </div>
+        </label>
+        <br>
+        <div class="row">
+          <button ui-sref="profile" class="button button-royal col-50 col-offset-25" ng-disabled="myForm.$invalid">
+            Log In
+          </button>
+        </div>
+      </div>
+    </form>
+  </ion-view>
 </ion-nav-view>

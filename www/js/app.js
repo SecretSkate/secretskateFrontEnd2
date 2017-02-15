@@ -44,7 +44,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .state('signup', {
   url: '/signup',
-  templateUrl: 'templates/signup.html'
+  templateUrl: 'templates/signup.html',
+  controller: 'MyCtrl'
 })
 
   // Each tab has its own nav history stack:
@@ -59,15 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('tab.pizza', {
-    url: '/pizza',
-    views: {
-      'tab-pizza': {
-        templateUrl: 'templates/tab-pizza.html',
-        controller: 'PizzaCtrl'
-      }
-    }
-  })
+
   .state('tab.video', {
       url: '/video',
       views: {

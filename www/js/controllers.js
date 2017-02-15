@@ -35,12 +35,6 @@ angular.module('starter.controllers', ['ngCordova'])
      $scope.map = map;
  });
 })
-  .controller("PizzaCtrl", function($scope, $ionicLoading, $timeout, $ionicTabsDelegate) {
-    console.log("help");
-      $scope.submit = function(username) {
-          alert("Thanks " + username);
-      }
-  })
 
 .controller('unused', function($scope, video) {
   console.log("boo");
@@ -51,8 +45,42 @@ angular.module('starter.controllers', ['ngCordova'])
 })
 
 .controller('VideoAllCtrl', function($scope){
+  $scope.videos = [{
+    name: "Pretty Hate Machine",
+    skater: "Nine Inch Nails",
+    videoUrl: "",
+    points: 0
+  },
+  {
+    name: "shred nasty",
+    skater: "Phil Bear",
+    videoUrl: "",
+    points: 0
+  },
+  {
+    name: "epic bail",
+    skater: "Lanky Luke",
+    videoUrl: "",
+    points: 0
+  }
+]
+
+$scope.upVote = function(currentVideo) {
+  currentVideo.points += 1;
+}
   console.log("WHAT THE FUCK");
 })
+
+
+
+.controller('MyCtrl', function($scope, $ionicHistory){
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+  console.log("FUCKY OU uU UOU");
+})
+
+
 
 .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
   console.log("hi");
