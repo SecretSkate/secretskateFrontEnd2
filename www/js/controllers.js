@@ -1,35 +1,12 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate) {
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state) {
+  console.log("hi");
 
-  $scope.items = ['Item 1', 'Item 2', 'Item 3'];
-
-  $scope.doRefresh = function() {
-
-    console.log('Refreshing!');
-    $timeout( function() {
-      //simulate async response
-      $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
-
-      //Stop the ion-refresher from spinning
-      $scope.$broadcast('scroll.refreshComplete');
-
-    }, 1000);
-
-  };
-
-  $scope.checkTab = function(){
-    var active = $ionicTabsDelegate.selectedIndex();
-    if (active === 0){
-      $scope.doRefresh();
-    }
-    else{
-      $ionicTabsDelegate.select(2, true);
-    }
-  }
 
   $scope.refresh = function() {
     console.log("refresh");
+    $state.reload()
   }
 
   google.maps.event.addDomListener(window, 'load', function() {
