@@ -92,7 +92,7 @@ angular.module('starter.controllers', ['ngCordova'])
             position: spot,
         });
         marker.addListener('click', function() {
-          $state.go('signup')
+          $state.go('video')
           console.log(spot);
        });
          }
