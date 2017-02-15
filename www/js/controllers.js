@@ -3,49 +3,59 @@
 
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate) {
 
-.controller('PizzaCtrl', function($scope) {
-  console.log($scope);
-  console.log("help");
+  google.maps.event.addDomListener(window, 'load', function() {
+    console.log("google");
+     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
+     var mapOptions = {
+         center: myLatlng,
+         zoom: 16,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
 
+     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+     navigator.geolocation.getCurrentPosition(function(pos) {
+       console.log(pos);
+         map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+         var myLocation = new google.maps.Marker({
+             position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+             map: map,
+             title: "My Location"
+         });
+     });
+     $scope.map = map;
+ });
 })
+  .controller("PizzaCtrl", function($scope, $ionicLoading, $timeout, $ionicTabsDelegate) {
+    console.log("help");
+      $scope.submit = function(username) {
+          alert("Thanks " + username);
+      }
+  })
+
 
 .controller('unused', function($scope, video) {
   console.log("boo");
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
   $scope.video = video.all();
   $scope.remove = function(video) {
     Video.remove(video);
   };
 })
+
+.controller('VideoAllCtrl', function($scope){
+  console.log("WHAT THE FUCK");
+})
+
 .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
+  console.log("hi");
   const vm = this;
   vm.testPost = function() {
-    console.log("hi");
+
   }
   function testPost() {
-    console.log("hi");
   }
-  // const vm = this;
-  // console.log($cordovaCapture);
-  //
-  // $scope.captureVideo = function() {
-  //   var options = { limit: 3, duration: 10 };
-  //
-  //   $cordovaCapture.captureVideo(options).then(function(videoData) {
-
-  //   }, function(err) {
-  //     // An error occurred. Show a message to the user
-  //   });
-  // }
   document.addEventListener("deviceready", init, false);
   function init() {
 

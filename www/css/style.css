@@ -1,17 +1,32 @@
 /* Empty. Add your own CSS if you like */
-
 body {
   font-family: 'Barrio', cursive;
 }
-
-h1 {
-
+h2{
+  font-family: 'Barrio', cursive;
 }
-
 .bar-stable {
   background-color: #00ffe9 !important;
 }
-
-#error{
-  color: red !important;
+#map {
+  width: 100%;
+  height: 90%;
+}
+.signup {
+  padding-top: 8em;
+}
+.video {
+  width: 100%;
+  height: 100%;
+}
+.takeVideo {
+  margin: 0;
+  margin-left: .1em;
+  margin-right: .1em;
+  /*border: 50px white solid;*/
+}
+img{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
 }

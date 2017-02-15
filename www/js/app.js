@@ -32,11 +32,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+  .state('tab', {
+  url: '/tab',
+  abstract: true,
+  templateUrl: 'templates/tabs.html'
+})
+  .state('profile', {
+  url: '/profile',
+  templateUrl: 'templates/profile.html'
+})
+
+.state('signup', {
+  url: '/signup',
+  templateUrl: 'templates/signup.html'
+})
 
   // Each tab has its own nav history stack:
 
@@ -59,7 +68,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-
   .state('tab.video', {
       url: '/video',
       views: {
@@ -69,6 +77,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
+    .state('tab.videoView', {
+        url: '/videoView',
+        views: {
+          'tab-videoView': {
+            templateUrl: 'templates/tab-videoView.html',
+            controller: 'VideoAllCtrl'
+          }
+        }
+      })
     .state('tab.video-detail', {
       url: '/video/:videoId',
       views: {
@@ -78,15 +95,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

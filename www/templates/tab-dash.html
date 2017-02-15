@@ -1,9 +1,9 @@
-<ion-view view-title="Secret Skate">
-  <ion-content class="padding">
-    <div class="card">
-      <div class="item item-text-wrap">
-      The Most Badass Place
+<ion-view cache-view="false" view-title="Secret Skate">
+  <ion-content ng-controller="DashCtrl" class="padding">
+    <div class="padding" id="map" data-tap-disabled="true">
     </div>
-  </div>
+    <button ui-sref="signup" class="button button-full button-royal">
+      Sign in to record!
+    </button>
   </ion-content>
 </ion-view>

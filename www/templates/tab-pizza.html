@@ -28,7 +28,7 @@
               ng-model="$ctrl.post.username"
               class="form-control"
               placeholder="John"
-              ng-minlength="4"
+              ng-minlength="2"
               required>
               <div class="error" ng-show="myForm.username.$touched && myForm.username.$invalid">
                 <p ng-show="myForm.username.$error.required">Title is required.</p>
@@ -43,17 +43,13 @@
               ng-model="$ctrl.post.password"
               class="form-control"
               placeholder="password"
-              ng-minlength="8"
+              ng-minlength="2"
               required>
               <div class="error" ng-show="myForm.password.$touched && myForm.password.$invalid">
                 <p ng-show="myForm.password.$error.required"> Password required.</p>
               </div>
       </label>
-      <div class="row">
-        <button type="submit" class="button button-dark col-50 col-offset-25" ng-disabled="myForm.$invalid">
-          Log In
-        </button>
-      </div>
+
     </div>
   </form>
   </ion-view>
