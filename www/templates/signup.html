@@ -1,5 +1,7 @@
-<ion-nav-view>
-  <ion-view>
+
+<ion-content>
+ <ion-nav-view>
+   <ion-view>
       <form class="padding list signup" novalidate name='myForm' ng-submit="$ctrl.addUser()">
       <div class="list">
         <a class="button icon ion-home" href="#/tab/tab-dash"> Home</a>
@@ -13,7 +15,7 @@
                 class="form-control"
                 placeholder="John@skate"
                 required>
-                <div class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">
+                <div id="error" class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">
                   <p ng-show="myForm.email.$error.required">email is required.</p>
                 </div>
         </label>
@@ -49,11 +51,12 @@
         </label>
         <br>
         <div class="row">
-          <button ui-sref="profile" class="button button-royal col-50 col-offset-25" ng-disabled="myForm.$invalid">
+          <a ui-sref="profile" class="button button-dark col-50 col-offset-25" ng-disabled="myForm.$invalid">
             Log In
-          </button>
+          </a>
         </div>
       </div>
     </form>
-  </ion-view>
-</ion-nav-view>
+   </ion-view>
+  </ion-nav-view>
+</ion-content>

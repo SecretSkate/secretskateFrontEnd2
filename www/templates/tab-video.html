@@ -1,17 +1,18 @@
+
 <ion-view view-title="Video">
   <ion-content ng-controller="VideoAllCtrl">
     <div class="list">
-      <div class="" ng-repeat="video in videos">
+      <div class="" ng-repeat="video in videos | orderBy: '-points' " >
         <!-- sort this shit by vote count -->
       <a class="item item-thumbnail-left">
           <img src="cover.jpg">
           <h2>{{video.name}}</h2>
           <p>{{video.skater}}</p>
-          <button class="button-balanced" ng-click="upVote(video)" ng-init="count=0">
-            +
+          <button class="icon ion-icecream button-balanced" ng-click="upVote(video)" ng-init="count=0">
+
           </button>
           <span>
-            Gnar: {{video.points}}
+            Ice Cream: {{video.points}}
           </span>
         </div>
       </a>

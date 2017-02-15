@@ -1,45 +1,19 @@
+<div class="bar bar-subheader padding">
+    <h2 class="title">Record A Rad Skate Trick</h2>
+    <a class="button button-small icon ion-home" href="#/tab/tab-dash"></a>
+ </div>
 
-<div class="bar bar-subheader">
-  <h2 class="title">Record A Rad Skate Trick</h2>
-</div>
 <ion-view view-title="Video">
   <ion-content ng-controller="VideoCtrl">
-    <div class="row">
-      <div class="col">
-        <img ng-show="imgURI !== undefined" ng-src="{{image}}">
-        <img ng-show="imgURI === undefined" ng-src="http://placehold.it/350x350">
-      </div>
+    <div class="card padding videocard">
+       <div class="col item item-body">
+            <img class="full-image" ng-show="imgURI !== undefined" ng-src="{{image}}">
+            <img class="full-image" ng-show="imgURI === undefined" ng-src="http://placehold.it/350x350">
+        </div>
     </div>
-    <div class="row">
-      <button class="col button button-royal" id="takeVideo">Take Video</button>
-      <a class="col button button-royal" href="#/tab/video">Post</a>
-      <a class="col button button-royal icon ion-home" href="#/tab/tab-dash"></a>
-    </div>
-		<div id="videoArea"></div>
+        <div class="row">
+          <button on-touch="ontouch" id="takeVideo" class="col button button-small button-dark padding" ui-sref="selectVideoFile">Record</button>
+        </div>
+    <div id="videoArea"></div>
   </ion-content>
-</ion-view>
-
-<!-- <ion-view view-title="Video">
-  <ion-content ng-controller="VideoCtrl">
-    <img ng-show="imgURI !== undefined" ng-src="{{image}}">
-    <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300"> -->
-    <!-- <button class="button" ng-click="captureVideo()">Take Picture</button> -->
-    <!-- <button id="takeVideo">Take Video</button>
-		<div id="videoArea"></div>
-    <p>hi</p>
-    <form ng-submit="$ctrl.testPost()">
-    <p>
-        Category: <input ng-model="$ctrl.updateCategory" id="edit-category">
-    </p>
-    <p>
-      Amount: <input ng-model="$ctrl.updateAmount" value="" id="edit-amount">
-    </p>
-
-    <p>
-        <button type="submit">test post</button>
-    </p>
-
-</form>
-<p ng-click="$ctrl.testPost()">hi</p>
-  </ion-content>
-</ion-view> -->
+  </ion-view>

@@ -42,7 +42,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   templateUrl: 'templates/profile.html'
 })
 
-.state('signup', {
+  .state('selectVideoFile', {
+  url: '/selectVideoFile',
+  templateUrl: 'templates/selectVideoFile.html'
+})
+
+  .state('signup', {
   url: '/signup',
   templateUrl: 'templates/signup.html',
   controller: 'MyCtrl'
