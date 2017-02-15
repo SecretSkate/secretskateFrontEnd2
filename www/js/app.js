@@ -32,26 +32,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   $stateProvider
 
   // setup an abstract state for the tabs directive
-  .state('tab', {
-  url: '/tab',
-  abstract: true,
-  templateUrl: 'templates/tabs.html'
-})
-  .state('profile', {
-  url: '/profile',
-  templateUrl: 'templates/profile.html'
-})
+    .state('tab', {
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/tabs.html'
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'templates/profile.html'
+    })
 
   .state('selectVideoFile', {
-  url: '/selectVideoFile',
-  templateUrl: 'templates/selectVideoFile.html'
-})
+    url: '/selectVideoFile',
+    templateUrl: 'templates/selectVideoFile.html'
+  })
 
   .state('signup', {
-  url: '/signup',
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'MyCtrl'
+  })
+
+  .state('videos', {
+  url: '/videos',
   templateUrl: 'templates/signup.html',
   controller: 'MyCtrl'
-})
+  })
 
   // Each tab has its own nav history stack:
 
@@ -76,14 +82,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
     .state('tab.videoView', {
-        url: '/videoView',
-        views: {
-          'tab-videoView': {
-            templateUrl: 'templates/tab-video.html',
-            controller: 'VideoAllCtrl'
-          }
+      url: '/videoView',
+      views: {
+        'tab-videoView': {
+          templateUrl: 'templates/tab-video.html',
+          controller: 'VideoAllCtrl'
         }
-      })
+      }
+    })
     .state('tab.video-detail', {
       url: '/video/:videoId',
       views: {

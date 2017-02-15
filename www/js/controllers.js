@@ -1,56 +1,86 @@
 (function() {
 
-
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state) {
-
-  $scope.videos = [{
-    id: 1,
-    title: "Pretty Hate Machine",
-    skater_id: 3,
-    video_url: "",
-    likes: 4,
-    comments: "cool!",
-    lat: 39.7576824,
-    lng: -105.02113929999999
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location) {
+  $scope.spots =
+ [
+  {
+   spot_id: 1,
+   name: "school four stair",
+   lat: 41.7576824,
+   lng: -105.00713929999999
   },
   {
-    id: 2,
-    title: "grindy grind",
-    skater_id: 2,
-    video_url: "",
-    likes: 5,
-    comments: "wicked!",
-    lat: 39.7576834,
-    lng: -105.02113969999999
+   spot_id: 2,
+   name: "short rail",
+   lat: 39.7576761,
+   lng: -107.00713929999999
+  },
+  {
+   spot_id: 3,
+   name: "gap",
+   lat: 39.7576761,
+   lng: -103.00713929999999
   }
-  ]
+ ]
 
-var latLng = []
-
-function Location(object) {
-  this.lat = object.lat;
-  this.lng = object.lng;
+ $scope.videos = [{
+  spot_id: 1,
+  name: "Pretty Hate Machine",
+  skater: "Nine Inch Nails",
+  videoUrl: "",
+  points: 0,
+},
+{
+  spot_id: 2,
+  name: "shred nasty",
+  skater: "Phil Bear",
+  videoUrl: "",
+  points: 0,
+},
+{
+  spot_id: 3,
+  name: "epic bail",
+  skater: "Lanky Luke",
+  videoUrl: "",
+  points: 0,
 }
+]
 
-for (var i = 0; i < $scope.videos.length; i++) {
-  latLng[i] = new Location($scope.videos[i]);
-}
+
+// knex.select("lat", "lng")
+//   .from("video")
+//   .then(function() {
+//     latLng.push(data)
+//     console.log(latLng);
+//   })
 
   google.maps.event.addDomListener(window, 'load', function() {
      var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
      var mapOptions = {
          center: myLatlng,
-         zoom: 12,
+         zoom: 5,
          mapTypeId: google.maps.MapTypeId.ROADMAP
      };
 
      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
      navigator.geolocation.getCurrentPosition(function(pos) {
-         map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-         console.log(pos.coords.latitude, pos.coords.longitude);
+         map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude))
+
+         var latLng = []
+
+         for (var i = 0; i < $scope.spots.length; i++) {
+           latLng[i] = new Location($scope.spots[i]);
+         }
+
+         function Location(object) {
+           this.id = object.spot_id;
+           this.name = object.name;
+           this.lat = object.lat;
+           this.lng = object.lng;
+         }
 
          for (var i = 0; i < latLng.length; i++) {
            createMarker(latLng[i])
@@ -61,6 +91,10 @@ for (var i = 0; i < $scope.videos.length; i++) {
             map: map,
             position: spot,
         });
+        marker.addListener('click', function() {
+          $state.go('signup')
+          console.log(spot);
+       });
          }
      });
      $scope.map = map;
@@ -75,6 +109,7 @@ for (var i = 0; i < $scope.videos.length; i++) {
 // })
 
 .controller('VideoAllCtrl', function($scope){
+  console.log($scope);
   $scope.videos = [{
     name: "Pretty Hate Machine",
     skater: "Nine Inch Nails",
@@ -112,16 +147,12 @@ $scope.upVote = function(currentVideo) {
 }
 })
 
-
-
 //this is important
 .controller('MyCtrl', function($scope, $ionicHistory){
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
 })
-
-
 
 .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
 
