@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/videoView',
         views: {
           'tab-videoView': {
-            templateUrl: 'templates/tab-videoView.html',
+            templateUrl: 'templates/tab-video.html',
             controller: 'VideoAllCtrl'
           }
         }
