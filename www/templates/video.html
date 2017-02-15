@@ -2,6 +2,7 @@
 <ion-view view-title="Video">
   <ion-content ng-controller="VideoAllCtrl">
     <div class="list">
+      <a class="button icon ion-home" href="#/tab/tab-dash"> Home</a>
       <div class="" ng-repeat="video in videos | orderBy: '-points' " >
         <!-- sort this shit by vote count -->
       <a class="item item-thumbnail-left">
