@@ -101,10 +101,17 @@ for (var i = 0; i < $scope.videos.length; i++) {
   }
 ]
 
+
 $scope.upVote = function(currentVideo) {
-  currentVideo.points += 1;
+
+  currentVideo.points +=1;
+
+  if (currentVideo.points < 0) {
+    currentVideo.points = 0;
+  }
 }
 })
+
 
 
 //this is important
