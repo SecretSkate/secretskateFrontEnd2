@@ -1,10 +1,9 @@
-<div class="bar bar-subheader padding">
-    <h2 class="title">Record A Rad Skate Trick</h2>
-    <a class="button button-small icon ion-home" href="#/tab/tab-dash"></a>
- </div>
+<ion-header-bar class="bar-positive">
+  <h1 class="title">Record A Rad Skate Trick</h1>
+  <a class="button button-small icon ion-home" href="#/tab/tab-dash"></a>
+</ion-header-bar>
 
-<ion-view view-title="Video">
-  <ion-content ng-controller="VideoCtrl">
+<ion-content class="has-header" ng-controller="VideoCtrl">
     <div class="card padding">
        <div class="col item item-body">
             <img class="full-image" ng-show="imgURI !== undefined" ng-src="{{image}}">
@@ -17,4 +16,3 @@
       </div>
       <div id="videoArea"></div>
   </ion-content>
-  </ion-view>
