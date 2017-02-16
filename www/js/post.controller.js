@@ -46,7 +46,7 @@
         if (xhr.status === 200) {
           document.getElementById('preview').src = url;
           document.getElementById('video-url').value = url;
-          $.post('upload/videos', {
+          $.post('https://secretskate-backend.herokuapp.com/upload/videos', {
             skater_id: 1,
             location: 'Denver',
             video_url: `https://s3-us-west-2.amazonaws.com/secretskatevids/${file.name}`},
