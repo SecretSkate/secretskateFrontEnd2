@@ -113,7 +113,7 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.videos = [{
     name: "Pretty Hate Machine",
     skater: "Nine Inch Nails",
-    videoUrl: "",
+    videoUrl: "../img/Denvers4.jpg",
     points: 0,
     lat: 41.7576824,
     lng: -105.00713929999999
@@ -121,7 +121,7 @@ angular.module('starter.controllers', ['ngCordova'])
   {
     name: "shred nasty",
     skater: "Phil Bear",
-    videoUrl: "",
+    videoUrl: "../img/fly.jpg",
     points: 0,
     lat: 39.7576761,
     lng: -107.00713929999999
@@ -129,7 +129,7 @@ angular.module('starter.controllers', ['ngCordova'])
   {
     name: "epic bail",
     skater: "Lanky Luke",
-    videoUrl: "",
+    videoUrl: "../img/guit.jpg",
     points: 0,
     lat: 39.7576761,
     lng: -103.00713929999999

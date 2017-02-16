@@ -4,7 +4,7 @@
       <div class="" ng-repeat="video in videos | orderBy: '-points' " >
         <!-- sort this shit by vote count -->
       <a class="item item-thumbnail-left">
-          <img src="cover.jpg">
+          <img src="{{video.videoUrl}}">
           <h2>{{video.name}}</h2>
           <p>{{video.skater}}</p>
           <button class="icon ion-icecream button-balanced" ng-click="upVote(video)" ng-init="count=0">
