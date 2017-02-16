@@ -1,12 +1,11 @@
 <ion-view view-title="Secret Skate">
  <ion-content ng-controller="PostCtrl">
    <input type="file" id="file-input">
-      <p id="status">Please select a file</p>
-      <img id="preview" src="/images/default.png">
+      <p id="status">Please select a video</p>
+      <img id="preview" src="">
 
       <form ng-submit="submitVideo()" method="POST">
-          <input type="hidden" id="video-url" name="video-url" value="/images/default.png">
-          <input type="text" name="username" placeholder="Username"><br>
+          <input type="hidden" id="video-url" name="video-url" value="">
           <button class="button button-block button-dark" type="submit" name="button">Submit</button>
       </form>
  </ion-content>
