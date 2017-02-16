@@ -8,7 +8,7 @@ angular.module('starter.controllers', ['ngCordova'])
   var url = 'https://secretskate-backend.herokuapp.com'
   var localUrl = 'http://localhost:3000'
 
-  $http.get(`http://localhost:3000/skate-spot`)
+  $http.get(`https://secretskate-backend.herokuapp.com`)
   .then(function(data) {
     console.log(data);
 
@@ -174,7 +174,7 @@ angular.module('starter.controllers', ['ngCordova'])
       var postObj = {
         video: s[0].fullpath
       }
-      $http.post('https://localhost:3000/', postObj)
+      $http.post('https://secretskate-backend.herokuapp.com/', postObj)
 
       var v = "<video controls='controls'>";
       v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
