@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('starter.controllers', ['ngCordova'])
-  .controller('PostCtrl', function($scope, $ionicLoading, $timeout, $state, $location)
+  .controller('PostCtrl', function($scope, $ionicLoading, $timeout, $state, $location) {
 
-  
+  console.log("this means the code is hooked up");
   (() => {
     document.getElementById("file-input").onchange = () => {
       const files = document.getElementById('file-input').files;
@@ -54,5 +54,6 @@
       };
       xhr.send(file);
     }
+  })
 
 }());
