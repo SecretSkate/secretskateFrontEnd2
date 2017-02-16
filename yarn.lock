@@ -10,6 +10,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular@^1.5.6:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.2.tgz#d0b677242ac4bf9ae81424297c6320973af4bb5a"
+
 ansi-regex@^0.2.0, ansi-regex@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-0.2.1.tgz#0d8e946967a3d8143f93e24e298525fc1b2235f9"
@@ -1406,6 +1410,12 @@ nan@^2.3.2:
 natives@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/natives/-/natives-1.1.0.tgz#e9ff841418a6b2ec7a495e939984f78f163e6e31"
+
+ng-simple-google-maps@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ng-simple-google-maps/-/ng-simple-google-maps-1.0.2.tgz#eeffaab66dcd93689dd824760b89b516f2f8d137"
+  dependencies:
+    angular "^1.5.6"
 
 node-gyp@^3.3.1:
   version "3.5.0"
