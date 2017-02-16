@@ -48,10 +48,10 @@
           document.getElementById('video-url').value = url;
           $.post('https://secretskate-backend.herokuapp.com/upload/videos', {
             skater_id: 1,
-            location: 'Denver',
-            video_url: `https://s3-us-west-2.amazonaws.com/secretskatevids/${file.name}`},
+            video_url: `https://s3-us-west-2.amazonaws.com/secretskatevids/${file.name}`,
+            date: '2017-01-08'},
             function(data){
-              console.log('DID STUFF', data);
+              console.log(file.name);
             })
           } else {
             alert('Could not upload file.');
