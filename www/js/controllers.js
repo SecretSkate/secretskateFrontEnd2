@@ -3,20 +3,29 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location, $http) {
+  console.log('I work');
 
   var url = 'https://secretskate-backend.herokuapp.com'
-  var localUrl = 'https://localhost:3000'
+  var localUrl = 'http://localhost:3000'
 
-  $http({
-    method: 'GET',
-    url: `${localUrl}/spots`
+  $http.get(`http://localhost:3000/skate-spot`)
+  .then(function(data) {
+    console.log(data);
 
-  }).then(function successCallback(response) {
-    console.log(response);
-
-  }, function errorCallback(response) {
+  }).catch(function(response) {
      console.log(response);
   });
+
+
+  // $http({
+  //   method: 'GET',
+  //   url: `${localUrl}/skate-spot`
+  // }).then(function(response) {
+  //   console.log(response);
+  //
+  // }).catch(function(response) {
+  //    console.log(response);
+  // });
 
   $scope.spots =
  [
