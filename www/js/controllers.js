@@ -91,14 +91,14 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.videos = []
 
   $scope.allVideos = [{
-   spot_id: 1,
+   spot_id: 3,
    name: "Pretty Hate Machine",
    skater: "Nine Inch Nails",
    videoUrl: "",
    points: 0,
  },
  {
-   spot_id: 2,
+   spot_id: 3,
    name: "shred nasty",
    skater: "Phil Bear",
    videoUrl: "",
