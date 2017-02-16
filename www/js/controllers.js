@@ -57,6 +57,7 @@
           position: spot,
         });
         marker.addListener('click', function() {
+<<<<<<< HEAD
           $state.go('video', {
             id: spot.id
           })
@@ -181,4 +182,125 @@
       document.querySelector("#videoArea").innerHTML = v;
     }
   })
+=======
+          $state.go('video', {id: spot.id})
+       });
+         }
+     });
+     $scope.map = map;
+ // });
+})
+
+
+.controller('VideoAllCtrl', function($scope, skateService, $stateParams){
+  console.log($stateParams.id);
+  // console.log(skateService.name); this is the service i have connected
+  $scope.videos = []
+
+  $scope.allVideos = [{
+   spot_id: 1,
+   name: "Pretty Hate Machine",
+   skater: "Nine Inch Nails",
+   videoUrl: "",
+   points: 0,
+ },
+ {
+   spot_id: 3,
+   name: "shred nasty",
+   skater: "Phil Bear",
+   videoUrl: "",
+   points: 0,
+ },
+ {
+   spot_id: 3,
+   name: "epic bail",
+   skater: "Lanky Luke",
+   videoUrl: "",
+   points: 0,
+ }
+ ]
+ $scope.upVote = function(currentVideo) {
+
+   currentVideo.points +=1;
+
+   if (currentVideo.points < 0) {
+     currentVideo.points = 0;
+   }
+ }
+
+ $scope.videos = $scope.allVideos.filter(function(video){
+   return video.spot_id == $stateParams.id;
+  })
+})
+
+
+
+// .controller('VideoAllCtrl', function($scope){
+//   console.log($scope);
+// //   $scope.videos = [{
+// //     name: "Pretty Hate Machine",
+// //     skater: "Nine Inch Nails",
+// //     videoUrl: "../img/Denvers4.jpg",
+// //     points: 0,
+// //     lat: 41.7576824,
+// //     lng: -105.00713929999999
+// //   },
+// //   {
+// //     name: "shred nasty",
+// //     skater: "Phil Bear",
+// //     videoUrl: "../img/fly.jpg",
+// //     points: 0,
+// //     lat: 39.7576761,
+// //     lng: -107.00713929999999
+// //   },
+// //   {
+// //     name: "epic bail",
+// //     skater: "Lanky Luke",
+// //     videoUrl: "../img/guit.jpg",
+// //     points: 0,
+// //     lat: 39.7576761,
+// //     lng: -103.00713929999999
+// //   }
+// // ]
+//
+//
+//
+// })
+
+//this is important
+.controller('MyCtrl', function($scope, $ionicHistory){
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+})
+
+.controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
+
+  document.addEventListener("deviceready", init, false);
+  function init() {
+
+	document.querySelector("#takeVideo").addEventListener("touchend", function() {
+		console.log("Take video");
+		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+	 }, false);
+  }
+
+  function captureError(e) {
+  	console.log("capture error: "+JSON.stringify(e));
+  }
+
+  function captureSuccess(s) {
+    console.log(s[0].fullpath);
+    var postObj = {
+      video: s[0].fullpath
+  }
+  $http.post('https://localhost:3000/', postObj)
+
+	var v = "<video controls='controls'>";
+	v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
+	v += "</video>";
+	document.querySelector("#videoArea").innerHTML = v;
+  }
+})
+>>>>>>> 97b9082c301c301dd0e82da1f3555f8fd3b79610
 })();
