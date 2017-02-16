@@ -129,7 +129,7 @@ angular.module('starter.controllers', ['ngCordova'])
 //      }
 //    }
 //  }
-=======
+
 .controller('VideoAllCtrl', function($scope){
   console.log($scope);
   $scope.videos = [{
@@ -157,7 +157,6 @@ angular.module('starter.controllers', ['ngCordova'])
     lng: -103.00713929999999
   }
 ]
->>>>>>> 691ef7b01f588802ccbfa163098e816de0b77ef1
 
 
 $scope.upVote = function(currentVideo) {
