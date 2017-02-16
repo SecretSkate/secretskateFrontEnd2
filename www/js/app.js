@@ -71,8 +71,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('video', {
-    url: '/video',
+  $stateProvider.state('video', {
+    url: '/video/:id',
     templateUrl: 'templates/video.html',
     controller: 'VideoCtrl'
   })

@@ -3,6 +3,7 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location) {
+
   $scope.spots =
  [
   {
@@ -25,29 +26,6 @@ angular.module('starter.controllers', ['ngCordova'])
   }
  ]
 
- $scope.videos = [{
-  spot_id: 1,
-  name: "Pretty Hate Machine",
-  skater: "Nine Inch Nails",
-  videoUrl: "",
-  points: 0,
-},
-{
-  spot_id: 2,
-  name: "shred nasty",
-  skater: "Phil Bear",
-  videoUrl: "",
-  points: 0,
-},
-{
-  spot_id: 3,
-  name: "epic bail",
-  skater: "Lanky Luke",
-  videoUrl: "",
-  points: 0,
-}
-]
-
 
 // knex.select("lat", "lng")
 //   .from("video")
@@ -69,10 +47,10 @@ angular.module('starter.controllers', ['ngCordova'])
      navigator.geolocation.getCurrentPosition(function(pos) {
          map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude))
 
-         var latLng = []
+         var localSpots = []
 
          for (var i = 0; i < $scope.spots.length; i++) {
-           latLng[i] = new Location($scope.spots[i]);
+           localSpots[i] = new Location($scope.spots[i]);
          }
 
          function Location(object) {
@@ -82,8 +60,8 @@ angular.module('starter.controllers', ['ngCordova'])
            this.lng = object.lng;
          }
 
-         for (var i = 0; i < latLng.length; i++) {
-           createMarker(latLng[i])
+         for (var i = 0; i < localSpots.length; i++) {
+           createMarker(localSpots[i])
          }
 
          function createMarker(spot) {
@@ -92,8 +70,7 @@ angular.module('starter.controllers', ['ngCordova'])
             position: spot,
         });
         marker.addListener('click', function() {
-          $state.go('video')
-          console.log(spot);
+          $state.go('video', {id: spot.id})
        });
          }
      });
@@ -108,33 +85,49 @@ angular.module('starter.controllers', ['ngCordova'])
 //   };
 // })
 
-.controller('VideoAllCtrl', function($scope){
-  console.log($scope);
-  $scope.videos = [{
-    name: "Pretty Hate Machine",
-    skater: "Nine Inch Nails",
-    videoUrl: "",
-    points: 0,
-    lat: 41.7576824,
-    lng: -105.00713929999999
-  },
-  {
-    name: "shred nasty",
-    skater: "Phil Bear",
-    videoUrl: "",
-    points: 0,
-    lat: 39.7576761,
-    lng: -107.00713929999999
-  },
-  {
-    name: "epic bail",
-    skater: "Lanky Luke",
-    videoUrl: "",
-    points: 0,
-    lat: 39.7576761,
-    lng: -103.00713929999999
-  }
-]
+.controller('VideoAllCtrl', function($scope, skateService, $stateParams){
+  console.log($stateParams.id);
+  // console.log(skateService.name); this is the service i have connected
+  $scope.videos = []
+
+  $scope.allVideos = [{
+   spot_id: 1,
+   name: "Pretty Hate Machine",
+   skater: "Nine Inch Nails",
+   videoUrl: "",
+   points: 0,
+ },
+ {
+   spot_id: 2,
+   name: "shred nasty",
+   skater: "Phil Bear",
+   videoUrl: "",
+   points: 0,
+ },
+ {
+   spot_id: 3,
+   name: "epic bail",
+   skater: "Lanky Luke",
+   videoUrl: "",
+   points: 0,
+ }
+ ]
+
+ $scope.videos = $scope.allVideos.filter(function(video){
+   return video.spot_id == $stateParams.id;
+  })
+  console.log($scope.videos);
+
+// $scope.videos.push($scope.allVideos[1])
+//
+// spotById($scope.allVideos, $scope.)
+//  function spotById(videosArray) {
+//    for (var i = 0; i < videosArray.length; i++) {
+//      if(videosArray.id === $stateParams.id) {
+//        $scope.vidoes.push(videosArray[i])
+//      }
+//    }
+//  }
 
 
 $scope.upVote = function(currentVideo) {
