@@ -76,126 +76,101 @@ angular.module('starter.controllers', ['ngCordova'])
             position: spot,
         });
         marker.addListener('click', function() {
-          $state.go('video', {id: spot.id})
-       });
-         }
-     });
-     $scope.map = map;
- // });
-})
-
-// .controller('unused', function($scope, video) {
-//   $scope.video = video.all();
-//   $scope.remove = function(video) {
-//     Video.remove(video);
-//   };
-// })
-
-.controller('VideoAllCtrl', function($scope, skateService, $stateParams){
-  console.log($stateParams.id);
-  // console.log(skateService.name); this is the service i have connected
-  $scope.videos = []
-
-  $scope.allVideos = [{
-   spot_id: 3,
-   name: "Pretty Hate Machine",
-   skater: "Nine Inch Nails",
-   videoUrl: "",
-   points: 0,
- },
- {
-   spot_id: 3,
-   name: "shred nasty",
-   skater: "Phil Bear",
-   videoUrl: "",
-   points: 0,
- },
- {
-   spot_id: 3,
-   name: "epic bail",
-   skater: "Lanky Luke",
-   videoUrl: "",
-   points: 0,
- }
- ]
-
- $scope.videos = $scope.allVideos.filter(function(video){
-   return video.spot_id == $stateParams.id;
+          $state.go('video', {
+            id: spot.id
+          })
+        });
+      }
+    });
+    $scope.map = map;
+    // });
   })
-})
+  .controller('VideoAllCtrl', function($scope, skateService, $stateParams) {
+    console.log($stateParams.id);
+    // console.log(skateService.name); this is the service i have connected
+    $scope.videos = []
 
-.controller('VideoAllCtrl', function($scope){
-  console.log($scope);
-//   $scope.videos = [{
-//     name: "Pretty Hate Machine",
-//     skater: "Nine Inch Nails",
-//     videoUrl: "../img/Denvers4.jpg",
-//     points: 0,
-//     lat: 41.7576824,
-//     lng: -105.00713929999999
-//   },
-//   {
-//     name: "shred nasty",
-//     skater: "Phil Bear",
-//     videoUrl: "../img/fly.jpg",
-//     points: 0,
-//     lat: 39.7576761,
-//     lng: -107.00713929999999
-//   },
-//   {
-//     name: "epic bail",
-//     skater: "Lanky Luke",
-//     videoUrl: "../img/guit.jpg",
-//     points: 0,
-//     lat: 39.7576761,
-//     lng: -103.00713929999999
-//   }
-// ]
+    $scope.allVideos = [{
+      spot_id: 1,
+      name: "Pretty Hate Machine",
+      skater: "Nine Inch Nails",
+      videoUrl: "",
+      points: 0,
+    }, {
+      spot_id: 3,
+      name: "shred nasty",
+      skater: "Phil Bear",
+      videoUrl: "",
+      points: 0,
+    }, {
+      spot_id: 3,
+      name: "epic bail",
+      skater: "Lanky Luke",
+      videoUrl: "",
+      points: 0,
+    }]
+    $scope.upVote = function(currentVideo) {
+
+      currentVideo.points += 1;
+
+      if (currentVideo.points < 0) {
+        currentVideo.points = 0;
+      }
+    }
+
+    $scope.videos = $scope.allVideos.filter(function(video) {
+      return video.spot_id == $stateParams.id;
+    })
 
 
-$scope.upVote = function(currentVideo) {
+    // $scope.videos.push($scope.allVideos[1])
+    // spotById($scope.allVideos, $scope.)
+    //  function spotById(videosArray) {
+    //    for (var i = 0; i < videosArray.length; i++) {
+    //      if(videosArray.id === $stateParams.id) {
+    //        $scope.vidoes.push(videosArray[i])
+    //      }
+    //    }
+    //  }
+    // })
+  })
 
-  currentVideo.points +=1;
+  //this is important
+  .controller('MyCtrl', function($scope, $ionicHistory) {
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
+  })
 
-  if (currentVideo.points < 0) {
-    currentVideo.points = 0;
-  }
-}
-})
+  .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
 
-//this is important
-.controller('MyCtrl', function($scope, $ionicHistory){
-  $scope.myGoBack = function() {
-    $ionicHistory.goBack();
-  };
-})
+    document.addEventListener("deviceready", init, false);
 
-.controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
+    function init() {
 
-  document.addEventListener("deviceready", init, false);
-  function init() {
+      document.querySelector("#takeVideo").addEventListener("touchend", function() {
+        console.log("Take video");
+        navigator.device.capture.captureVideo(captureSuccess, captureError, {
+          limit: 1
+        });
+      }, false);
+    }
 
-	document.querySelector("#takeVideo").addEventListener("touchend", function() {
-		console.log("Take video");
-		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
-	 }, false);
-  }
+    function captureError(e) {
+      console.log("capture error: " + JSON.stringify(e));
+    }
 
-  function captureError(e) {
-  	console.log("capture error: "+JSON.stringify(e));
-  }
+    function captureSuccess(s) {
+      console.log(s[0].fullpath);
+      var postObj = {
+        video: s[0].fullpath
+      }
+      $http.post('https://localhost:3000/', postObj)
 
-  function captureSuccess(s) {
-    console.log(s[0].fullpath);
-    var postObj = {
-      video: s[0].fullpath
-  }
-  $http.post('https://localhost:3000/', postObj)
-
-	var v = "<video controls='controls'>";
-	v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
-	v += "</video>";
-	document.querySelector("#videoArea").innerHTML = v;
-  }
-})
+      var v = "<video controls='controls'>";
+      v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
+      v += "</video>";
+      document.querySelector("#videoArea").innerHTML = v;
+    }
+  })
 })();
