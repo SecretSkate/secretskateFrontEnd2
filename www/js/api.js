@@ -15,3 +15,5 @@ $xhr.done(function(data) {
 $xhr.fail(function(err) {
     console.log(err);
 });
+
+// $https.get('https://secretskate-backend.herokuapp.com/')

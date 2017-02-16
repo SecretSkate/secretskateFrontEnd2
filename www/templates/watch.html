@@ -1,0 +1,11 @@
+<ion-nav-view>
+  <ion-view view-title="My Page">
+    <ion-content ng-repeat="video in videos">
+      <div class="">
+        <h2>{{video.name}}</h2>
+        <h3>{{video.skater}}</h3>
+        <img src="{{video.videoUrl}}" alt="">
+      </div>
+    </ion-content>
+  </ion-view>
+</ion-nav-view>

@@ -2,6 +2,9 @@
 
 angular.module('starter.controllers', ['ngCordova'])
 
+<<<<<<< HEAD
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location) {
+=======
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location, $http) {
   console.log('I work');
 
@@ -27,6 +30,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //    console.log(response);
   // });
 
+>>>>>>> 3989a1618f02ccd543766a5e337a814603297678
   $scope.spots =
  [
   {
@@ -151,9 +155,58 @@ angular.module('starter.controllers', ['ngCordova'])
     };
   })
 
+<<<<<<< HEAD
+.controller('VideoAllCtrl', function($scope, skateService, $stateParams, $state){
+
+  $scope.watch = function(video) {
+    console.log(video);
+    $state.go('watch', {id: video.video_id})
+  }
+
+  // console.log(skateService.name); this is the service i have connected
+  // $scope.videos = []
+
+  $scope.allVideos = [{
+   spot_id: 1,
+   video_id: 1,
+   name: "Pretty Hate Machine",
+   skater: "Nine Inch Nails",
+   videoUrl: "",
+   points: 0
+ },
+ {
+   spot_id: 2,
+   video_id: 2,
+   name: "shred nasty",
+   skater: "Phil Bear",
+   videoUrl: "",
+   points: 0
+ },
+ {
+   spot_id: 3,
+   video_id: 3,
+   name: "epic bail",
+   skater: "Lanky Luke",
+   videoUrl: "",
+   points: 0
+ },
+ {
+  spot_id: 1,
+  video_id: 4,
+  name: "Pretty Hate Machine",
+  skater: "Nine Inch Nails",
+  videoUrl: "",
+  points: 0
+}
+ ]
+ $scope.upVote = function(currentVideo) {
+
+   currentVideo.points +=1;
+=======
   .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
 
     document.addEventListener("deviceready", init, false);
+>>>>>>> 3989a1618f02ccd543766a5e337a814603297678
 
     function init() {
 
@@ -182,4 +235,59 @@ angular.module('starter.controllers', ['ngCordova'])
       document.querySelector("#videoArea").innerHTML = v;
     }
   })
+<<<<<<< HEAD
+})
+
+.controller('MyCtrl', function($scope, $ionicHistory){
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+})
+
+.controller('Watch', function($scope, $stateParams, $state) {
+  $scope.videos = [{
+   spot_id: 1,
+   video_id: 1,
+   name: "Pretty Hate Machine",
+   skater: "Nine Inch Nails",
+   videoUrl: "../img/fly.jpg",
+   points: 0
+ }
+]
+
+  console.log("watch controller");
+  console.log($stateParams.id);
+
+})
+
+.controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
+
+  document.addEventListener("deviceready", init, false);
+  function init() {
+
+	document.querySelector("#takeVideo").addEventListener("touchend", function() {
+		console.log("Take video");
+		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+	 }, false);
+  }
+
+  function captureError(e) {
+  	console.log("capture error: "+JSON.stringify(e));
+  }
+
+  function captureSuccess(s) {
+    console.log(s[0].fullpath);
+    var postObj = {
+      video: s[0].fullpath
+  }
+  $http.post('https://localhost:3000/', postObj)
+
+	var v = "<video controls='controls'>";
+	v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
+	v += "</video>";
+	document.querySelector("#videoArea").innerHTML = v;
+  }
+})
+=======
+>>>>>>> 3989a1618f02ccd543766a5e337a814603297678
 })();
