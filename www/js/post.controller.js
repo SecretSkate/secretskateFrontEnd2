@@ -1,24 +1,30 @@
 (function() {
   'use strict';
-
-  angular.module('starter.controllers', ['ngCordova'])
+  angular.module('starter.controllers')
   .controller('PostCtrl', function($scope, $ionicLoading, $timeout, $state, $location) {
 
-  console.log("this means the code is hooked up");
-  (() => {
-    document.getElementById("file-input").onchange = () => {
+    var file = null;
+
+    $scope.submitVideo = function() {
+      console.log("submitted");
+      getSignedRequest(file);
+    }
+
+    document.getElementById("file-input").onchange = function() {
       const files = document.getElementById('file-input').files;
-      const file = files[0];
+      file = files[0];
       if (file == null) {
         return alert('No file selected.');
       }
-      getSignedRequest(file);
+      console.log(file);
     };
-  })();
+  })
+
+}());
 
   function getSignedRequest(file) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/upload/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.open('GET', `https://secretskate-backend.herokuapp.com/upload/sign-s3?file-name=${file.name}&file-type=${file.type}`);
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
@@ -54,6 +60,3 @@
       };
       xhr.send(file);
     }
-  })
-
-}());
