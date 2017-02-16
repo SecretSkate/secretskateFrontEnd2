@@ -4,10 +4,10 @@
       <p id="status">Please select a file</p>
       <img id="preview" src="/images/default.png">
 
-      <form method="POST" action="/app-video">
+      <form ng-submit="$ctrl.PostCtrl(video)" method="POST">
           <input type="hidden" id="video-url" name="video-url" value="/images/default.png">
           <input type="text" name="username" placeholder="Username"><br>
-          <button class="button button-block button-dark" type="button" name="button" ui-sref="tab.video"><input type="submit"></button>
+          <button class="button button-block button-dark" type="submit" name="button">Submit</button>
       </form>
  </ion-content>
 </ion-view>
