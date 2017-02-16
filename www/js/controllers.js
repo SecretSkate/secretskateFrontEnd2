@@ -1,61 +1,88 @@
 (function() {
 
+angular.module('starter.controllers', ['ngCordova'])
 
-  angular.module('starter.controllers', ['ngCordova'])
+.controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location, $http) {
+  console.log('I work');
 
-  .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location) {
+  var url = 'https://secretskate-backend.herokuapp.com'
+  var localUrl = 'http://localhost:3000'
 
-    $scope.spots = [{
-      spot_id: 1,
-      name: "school four stair",
-      lat: 41.7576824,
-      lng: -105.00713929999999
-    }, {
-      spot_id: 2,
-      name: "short rail",
-      lat: 39.7576761,
-      lng: -107.00713929999999
-    }, {
-      spot_id: 3,
-      name: "gap",
-      lat: 39.7576761,
-      lng: -103.00713929999999
-    }]
+  $http.get(`http://localhost:3000/skate-spot`)
+  .then(function(data) {
+    console.log(data);
 
-    // google.maps.event.addDomListener(window, 'load', function() {
-    var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+  }).catch(function(response) {
+     console.log(response);
+  });
 
-    var mapOptions = {
-      center: myLatlng,
-      zoom: 5,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
 
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    navigator.geolocation.getCurrentPosition(function(pos) {
-      map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude))
+  // $http({
+  //   method: 'GET',
+  //   url: `${localUrl}/skate-spot`
+  // }).then(function(response) {
+  //   console.log(response);
+  //
+  // }).catch(function(response) {
+  //    console.log(response);
+  // });
 
-      var localSpots = []
+  $scope.spots =
+ [
+  {
+   spot_id: 1,
+   name: "school four stair",
+   lat: 41.7576824,
+   lng: -105.00713929999999
+  },
+  {
+   spot_id: 2,
+   name: "short rail",
+   lat: 39.7576761,
+   lng: -107.00713929999999
+  },
+  {
+   spot_id: 3,
+   name: "gap",
+   lat: 39.7576761,
+   lng: -103.00713929999999
+  }
+ ]
 
-      for (var i = 0; i < $scope.spots.length; i++) {
-        localSpots[i] = new Location($scope.spots[i]);
-      }
+  // google.maps.event.addDomListener(window, 'load', function() {
+     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
-      function Location(object) {
-        this.id = object.spot_id;
-        this.name = object.name;
-        this.lat = object.lat;
-        this.lng = object.lng;
-      }
+     var mapOptions = {
+         center: myLatlng,
+         zoom: 5,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
 
-      for (var i = 0; i < localSpots.length; i++) {
-        createMarker(localSpots[i])
-      }
+     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+     navigator.geolocation.getCurrentPosition(function(pos) {
+         map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude))
 
-      function createMarker(spot) {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: spot,
+         var localSpots = []
+
+         for (var i = 0; i < $scope.spots.length; i++) {
+           localSpots[i] = new Location($scope.spots[i]);
+         }
+
+         function Location(object) {
+           this.id = object.spot_id;
+           this.name = object.name;
+           this.lat = object.lat;
+           this.lng = object.lng;
+         }
+
+         for (var i = 0; i < localSpots.length; i++) {
+           createMarker(localSpots[i])
+         }
+
+         function createMarker(spot) {
+           var marker = new google.maps.Marker({
+            map: map,
+            position: spot,
         });
         marker.addListener('click', function() {
           $state.go('video', {

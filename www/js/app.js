@@ -78,24 +78,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
 
-  // .state('video', {
-  //     url: '/video',
-  //     views: {
-  //       'tab-video': {
-  //         templateUrl: 'templates/video.html',
-  //         controller: 'VideoCtrl'
-  //       }
-  //     }
-  //   })
-    .state('tab.videoView', {
-      url: '/videoView',
-      views: {
-        'tab-videoView': {
-          templateUrl: 'templates/tab-video.html',
-          controller: 'VideoAllCtrl'
-        }
-      }
-    })
+
     .state('tab.video-detail', {
       url: '/video/:videoId',
       views: {
