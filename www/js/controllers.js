@@ -85,6 +85,7 @@ angular.module('starter.controllers', ['ngCordova'])
 //   };
 // })
 
+<<<<<<< HEAD
 .controller('VideoAllCtrl', function($scope, skateService, $stateParams){
   console.log($stateParams.id);
   // console.log(skateService.name); this is the service i have connected
@@ -128,6 +129,35 @@ angular.module('starter.controllers', ['ngCordova'])
 //      }
 //    }
 //  }
+=======
+.controller('VideoAllCtrl', function($scope){
+  console.log($scope);
+  $scope.videos = [{
+    name: "Pretty Hate Machine",
+    skater: "Nine Inch Nails",
+    videoUrl: "../img/Denvers4.jpg",
+    points: 0,
+    lat: 41.7576824,
+    lng: -105.00713929999999
+  },
+  {
+    name: "shred nasty",
+    skater: "Phil Bear",
+    videoUrl: "../img/fly.jpg",
+    points: 0,
+    lat: 39.7576761,
+    lng: -107.00713929999999
+  },
+  {
+    name: "epic bail",
+    skater: "Lanky Luke",
+    videoUrl: "../img/guit.jpg",
+    points: 0,
+    lat: 39.7576761,
+    lng: -103.00713929999999
+  }
+]
+>>>>>>> 691ef7b01f588802ccbfa163098e816de0b77ef1
 
 
 $scope.upVote = function(currentVideo) {

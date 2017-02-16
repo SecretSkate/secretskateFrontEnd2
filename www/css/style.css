@@ -5,7 +5,6 @@ ion-content {
 
 body {
   font-family: 'Barrio', cursive;
-
 }
 
 button {
@@ -26,7 +25,7 @@ h2 {
 }
 
 .signup {
-  padding-top: 8em;
+  /*margin-bottom: 15em;*/
 }
 
 .video {
@@ -48,9 +47,27 @@ img{
   flex-direction: row;
   align-content: center;
 }
+#picture{
+  padding-top: 61%;
+  background-image: url(../img/skateBackDrop.jpg);
+}
+#picture2{
+  padding-top: 31%;
+  background-image: url(../img/skateBackDrop.jpg);
+}
 .videocard{
-  margin-top: 5em;
+  /*margin-top: 3em;*/
+  /*max-height: 75%;*/
 }
 .item h1:last-child, .item h2:last-child, .item h3:last-child, .item h4:last-child, .item h5:last-child, .item h6:last-child, .item p:last-child{
   color: red;
+}
+#bigger{
+  margin-bottom: .6em;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+}
+.whiteBkg{
+  background-color: white;
 }

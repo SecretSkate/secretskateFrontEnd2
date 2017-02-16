@@ -1,17 +1,9 @@
-<ion-header-bar class="bar-positive">
-  <h1 class="title">Record A Rad Skate Trick</h1>
-  <a class="button button-small icon ion-home" href="#/tab/tab-dash"></a>
-</ion-header-bar>
-
-<ion-content class="has-header" ng-controller="VideoCtrl">
-    <div class="card padding">
-       <div class="col item item-body">
-            <img class="full-image" ng-show="imgURI !== undefined" ng-src="{{image}}">
-            <img class="full-image" ng-show="imgURI === undefined" ng-src="http://placehold.it/350x350">
+<ion-view view-title="Video">
+  <ion-content id="picture" ng-controller="VideoCtrl">
+    <div class="row center">
+        <div class="col item item-body">
+            <button on-touch="ontouch" id="takeVideo" class="col button button-small button-dark padding" ui-sref="selectVideoFile"><p id="bigger">Click to record a video</p></button>
         </div>
+        <div id="videoArea"></div>
     </div>
-        <div class="row">
-          <button on-touch="ontouch" id="takeVideo" class="col button button-small button-dark padding" ui-sref="selectVideoFile">Record</button>
-        </div>
-    <div id="videoArea"></div>
   </ion-content>
