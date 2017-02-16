@@ -3,7 +3,6 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location) {
-
   $scope.spots =
  [
   {
@@ -71,32 +70,48 @@ angular.module('starter.controllers', ['ngCordova'])
 })
 
 
-.controller('VideoAllCtrl', function($scope, skateService, $stateParams){
-  console.log($stateParams.id);
+.controller('VideoAllCtrl', function($scope, skateService, $stateParams, $state){
+
+  $scope.watch = function(video) {
+    console.log(video);
+    $state.go('watch', {id: video.video_id})
+  }
+
   // console.log(skateService.name); this is the service i have connected
-  $scope.videos = []
+  // $scope.videos = []
 
   $scope.allVideos = [{
    spot_id: 1,
+   video_id: 1,
    name: "Pretty Hate Machine",
    skater: "Nine Inch Nails",
    videoUrl: "",
-   points: 0,
+   points: 0
  },
  {
-   spot_id: 3,
+   spot_id: 2,
+   video_id: 2,
    name: "shred nasty",
    skater: "Phil Bear",
    videoUrl: "",
-   points: 0,
+   points: 0
  },
  {
    spot_id: 3,
+   video_id: 3,
    name: "epic bail",
    skater: "Lanky Luke",
    videoUrl: "",
-   points: 0,
- }
+   points: 0
+ },
+ {
+  spot_id: 1,
+  video_id: 4,
+  name: "Pretty Hate Machine",
+  skater: "Nine Inch Nails",
+  videoUrl: "",
+  points: 0
+}
  ]
  $scope.upVote = function(currentVideo) {
 
@@ -112,45 +127,26 @@ angular.module('starter.controllers', ['ngCordova'])
   })
 })
 
-
-
-// .controller('VideoAllCtrl', function($scope){
-//   console.log($scope);
-// //   $scope.videos = [{
-// //     name: "Pretty Hate Machine",
-// //     skater: "Nine Inch Nails",
-// //     videoUrl: "../img/Denvers4.jpg",
-// //     points: 0,
-// //     lat: 41.7576824,
-// //     lng: -105.00713929999999
-// //   },
-// //   {
-// //     name: "shred nasty",
-// //     skater: "Phil Bear",
-// //     videoUrl: "../img/fly.jpg",
-// //     points: 0,
-// //     lat: 39.7576761,
-// //     lng: -107.00713929999999
-// //   },
-// //   {
-// //     name: "epic bail",
-// //     skater: "Lanky Luke",
-// //     videoUrl: "../img/guit.jpg",
-// //     points: 0,
-// //     lat: 39.7576761,
-// //     lng: -103.00713929999999
-// //   }
-// // ]
-//
-//
-//
-// })
-
-//this is important
 .controller('MyCtrl', function($scope, $ionicHistory){
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
+})
+
+.controller('Watch', function($scope, $stateParams, $state) {
+  $scope.videos = [{
+   spot_id: 1,
+   video_id: 1,
+   name: "Pretty Hate Machine",
+   skater: "Nine Inch Nails",
+   videoUrl: "../img/fly.jpg",
+   points: 0
+ }
+]
+
+  console.log("watch controller");
+  console.log($stateParams.id);
+
 })
 
 .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {

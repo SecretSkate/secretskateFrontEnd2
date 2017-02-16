@@ -59,6 +59,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   controller: 'MyCtrl'
   })
 
+  .state('watch', {
+  url: '/watch/:id',
+  templateUrl: 'templates/watch.html',
+  controller: 'Watch'
+  })
+
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
@@ -76,35 +82,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     templateUrl: 'templates/video.html',
     controller: 'VideoCtrl'
   })
-
-
-  // .state('video', {
-  //     url: '/video',
-  //     views: {
-  //       'tab-video': {
-  //         templateUrl: 'templates/video.html',
-  //         controller: 'VideoCtrl'
-  //       }
-  //     }
-  //   })
-    .state('tab.videoView', {
-      url: '/videoView',
-      views: {
-        'tab-videoView': {
-          templateUrl: 'templates/tab-video.html',
-          controller: 'VideoAllCtrl'
-        }
-      }
-    })
-    .state('tab.video-detail', {
-      url: '/video/:videoId',
-      views: {
-        'tab-video': {
-          templateUrl: 'templates/video-detail.html',
-          controller: 'VideoDetailCtrl'
-        }
-      }
-    })
 
 
   // if none of the above states are matched, use this as the fallback
