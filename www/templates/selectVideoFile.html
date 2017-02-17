@@ -1,8 +1,9 @@
 <ion-view view-title="Secret Skate">
  <ion-content ng-controller="PostCtrl">
-   <input type="file" id="file-input">
-      <p id="status">Please select a video</p>
-      <img id="preview" src="">
+<div class="upload">
+   <p id="status">Once you've gotten your video ready, upload the file below!</p>
+   <input class="upload-button" type="file" id="file-input">
+   </div>
 
       <form ng-submit="submitVideo()" method="POST">
           <input type="hidden" id="video-url" name="video-url" value="">
