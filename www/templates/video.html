@@ -2,12 +2,13 @@
     <div class="list">
       <a class="button icon ion-home" href="#/tab/tab-dash"> Home</a>
 
-      <div class="" ng-repeat="video in videos | orderBy: '-points' " >
+      <div class="list" ng-repeat="video in videos | orderBy: '-points' " >
       <a ng-click="watch(video)" class="item item-thumbnail-left">
-          <img src="{{video.videoUrl}}">
+
+          <img src="http://i.imgur.com/X5aZKjY.jpg">
           <h2>{{video.name}}</h2>
           <p>{{video.skater}}</p>
-          <button class="icon ion-icecream button-balanced" ng-click="upVote(video)" ng-init="count=0">
+          <button class="icon ion-icecream" ng-click="upVote(video)" ng-init="count=0">
 
           </button>
           <span>

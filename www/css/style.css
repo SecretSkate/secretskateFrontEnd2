@@ -12,7 +12,7 @@ button {
 }
 
 h2 {
-  font-family: 'Barrio', cursive;
+  font-family: 'Raleway', sans-serif;
 }
 
 .bar-stable {
@@ -90,4 +90,11 @@ img{
 
 .upload-button {
   margin-left: 1em;
+}
+
+.ionic .custom-thumbnail > img:first-child, .ionic .custom-thumbnail .item-image, .ionic .custom-thumbnail .item-content > img:first-child, .ionic .custom-thumbnail .item-content .item-image {
+   top: 0px !important;
+   left: 0px !important;
+   max-width: 100px !important;
+   max-height: 100px !important;
 }
