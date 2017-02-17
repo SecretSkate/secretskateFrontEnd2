@@ -8,6 +8,7 @@ body {
 }
 
 button {
+    width: 70vw;
     font-family: 'Barrio', cursive;
 }
 
@@ -70,4 +71,24 @@ img{
 }
 .whiteBkg{
   background-color: white;
+}
+
+.upload {
+  padding: 1em;
+}
+
+#submit {
+  font-family: 'Raleway', sans-serif;
+}
+
+#takeVideo {
+  font-family: 'Raleway', sans-serif;
+}
+
+#file-input {
+  size: 60;
+}
+
+.upload-button {
+  margin-left: 1em;
 }
