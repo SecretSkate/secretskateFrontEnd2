@@ -4,8 +4,8 @@
       <div class="">
         <h2>{{video.name}}</h2>
         <!-- <img src="{{video.video_url}}" alt=""> -->
-        <video width="320" height="240" controls>
-          <source ng-src="{{video.video_url}}" type="video/mp4">
+        <video preload="none" width="320" height="240" controls webkit-playsinline>
+          <!-- <source ng-src="{{video.video_url}}" type="video/mp4"> -->
         </video>
         <!-- <div class="video-container">
           <iframe src="{{video.video_url}}" frameborder="0" width="560" height="315"></iframe>
