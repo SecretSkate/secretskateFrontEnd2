@@ -1,4 +1,4 @@
-#1 SECRET SKATE!
+# SECRET SKATE!
 
 A user driven app that allows skaters to view secret skating spots as well as record their tricks.
 Videos will populate the map where users can view the location and up vote the coolest trick. (Coolest tricks on top are shown with the most "ice cream points")
