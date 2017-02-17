@@ -1,8 +1,16 @@
 SECRET SKATE!
 
 Description:
-* An app that allows users to view secret skating spots as well as upload gnarly videos!
-* Videos will populate the map where users can view the location and vote on their favorite video.
+
+ the technologies you used, and some information about the workflow you followed.
+1-2 tight paragraphs
+
+
+* A user driven app that allows skaters to view secret skating spots as well as record their tricks.
+Videos will populate the map where users can view the location and up vote the coolest trick. (Coolest tricks on top are shown with the most "ice cream points")
+
+The theme of our project was unfamiliar environments. We chose to learn Ionic v1 for our mobile app. Other relevant and unfamiliar things were AWS S3_Buckets and ionic plug in's called ngCordova. S3_Buckets were used to store our video content and provide us with the video url. Given the URL we could view freshly recorded content. ngCordova was used to manipulate the video files (playback, view, record, pause, stop, etc...)
+
 
 How To Use:
 - Open app
@@ -13,12 +21,16 @@ How To Use:
     - After video is taken, let the page load, you will be redirected to a view page.
       - Your video is now posted!
 
-Tech:
-- AWS S3_Buckets
-- Ionic v1 (& ngCordova & Angular by default)
-- Expressjs
-- pg
-
+To run locally/edit our shit:
+- fork / clone the repo
+  - $ git clone repo_SSHlink
+- install ionic if you dont have it:
+  - $ npm install ionic
+- get some extra files with:
+  - $ ionic resources
+- to view in the browser:
+  - $ ionic serve --lab
+- If you cant see in your browser, follow error logs, and download other dependencies/updates/whatever the fuck ionic throws at you.
 
 Where The Magic Happens:
 * Front end work happened in these directories:
@@ -34,3 +46,5 @@ GitHub Repos:
 - Repo for all: https://github.com/SecretSkate
 - Repo for front: https://github.com/SecretSkate/secretskateFrontEnd2
 - Repo for back: https://github.com/SecretSkate/backend
+
+Developed by:
