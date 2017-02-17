@@ -2,53 +2,21 @@
 
   angular.module('starter.controllers', ['ngCordova'])
 
-  .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location, $http) {
+    .controller('DashCtrl', function($scope, $ionicLoading, $timeout, $ionicTabsDelegate, $state, $location, $http) {
       console.log('I work');
 
       var url = 'https://secretskate-backend.herokuapp.com'
       var localUrl = 'http://localhost:3000'
 
-      // $http.get(`http://localhost:3000/skate-spot`)
-      //   .then(function(data) {
-      //     console.log(data);
-      //   }).catch(function(response) {
-      //      console.log(response);
-      //   });
-      $http.get(`https://secretskate-backend.herokuapp.com`)
+      $http.get(`https://secretskate-backend.herokuapp.com/skate-spot`)
         .then(function(data) {
-          console.log(data);
-
+          $scope.spots = data.data;
         }).catch(function(response) {
           console.log(response);
         });
 
 
-      // $http({
-      //   method: 'GET',
-      //   url: `${localUrl}/skate-spot`
-      // }).then(function(response) {
-      //   console.log(response);
-      //
-      // }).catch(function(response) {
-      //    console.log(response);
-      // });
-
-      $scope.spots = [{
-        spot_id: 1,
-        name: "school four stair",
-        lat: 41.7576824,
-        lng: -105.00713929999999
-      }, {
-        spot_id: 2,
-        name: "short rail",
-        lat: 39.7576761,
-        lng: -107.00713929999999
-      }, {
-        spot_id: 3,
-        name: "gap",
-        lat: 39.7576761,
-        lng: -103.00713929999999
-      }]
+      $scope.spots = []
 
       // google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -70,10 +38,10 @@
         }
 
         function Location(object) {
-          this.id = object.spot_id;
+          this.id = object.id;
           this.name = object.name;
-          this.lat = object.lat;
-          this.lng = object.lng;
+          this.lat = Number(object.lat);
+          this.lng = Number(object.lng);
         }
 
         for (var i = 0; i < localSpots.length; i++) {
@@ -95,30 +63,18 @@
       $scope.map = map;
       // });
     })
-    .controller('VideoAllCtrl', function($scope, skateService, $stateParams) {
-      console.log($stateParams.id);
+    .controller('VideoAllCtrl', function($scope, skateService, $stateParams, $http, $state) {
       // console.log(skateService.name); this is the service i have connected
+
+      $http.get(`https://secretskate-backend.herokuapp.com/skate-spot/video`)
+        .then(function(data) {
+          $scope.videos = data.data;
+        }).catch(function(response) {
+          console.log(response);
+        });
+
       $scope.videos = []
 
-      $scope.allVideos = [{
-        spot_id: 1,
-        name: "Pretty Hate Machine",
-        skater: "Nine Inch Nails",
-        videoUrl: "",
-        points: 0,
-      }, {
-        spot_id: 3,
-        name: "shred nasty",
-        skater: "Phil Bear",
-        videoUrl: "",
-        points: 0,
-      }, {
-        spot_id: 3,
-        name: "epic bail",
-        skater: "Lanky Luke",
-        videoUrl: "",
-        points: 0,
-      }]
       $scope.upVote = function(currentVideo) {
 
         currentVideo.points += 1;
@@ -128,28 +84,35 @@
         }
       }
 
-      $scope.videos = $scope.allVideos.filter(function(video) {
-        return video.spot_id == $stateParams.id;
-      })
+      $scope.watch = function(video) {
+        $state.go('watch', {
+          id: video.video_id
+        })
+      }
 
-      // $scope.videos.push($scope.allVideos[1])
-      // spotById($scope.allVideos, $scope.)
-      //  function spotById(videosArray) {
-      //    for (var i = 0; i < videosArray.length; i++) {
-      //      if(videosArray.id === $stateParams.id) {
-      //        $scope.vidoes.push(videosArray[i])
-      //      }
-      //    }
-      //  }
+      // $scope.videos = $scope.allVideos.filter(function(video) {
+      //   return video.spot_id == $stateParams.id;
       // })
     })
 
-  //this is important
-  .controller('MyCtrl', function($scope, $ionicHistory) {
+    //this is important
+    .controller('MyCtrl', function($scope, $ionicHistory) {
       $scope.myGoBack = function() {
         $ionicHistory.goBack();
       };
     })
+
+    .controller('Watch', function($scope, $stateParams, $state, $http, $sce) {
+      $scope.videos = []
+
+      $http.get(`https://secretskate-backend.herokuapp.com/skate-spot/video`)
+        .then(function(data) {
+          $scope.videos.push(data.data[$stateParams.id - 4])
+        }).catch(function(response) {
+          console.log(response);
+        });
+    })
+
     .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
 
       document.addEventListener("deviceready", init, false);
@@ -173,7 +136,7 @@
         var postObj = {
           video: s[0].fullpath
         }
-        $http.post('https://secretskate-backend.herokuapp.com/', postObj)
+        $http.post('https://localhost:3000/', postObj)
 
         var v = "<video controls='controls'>";
         v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
@@ -181,58 +144,4 @@
         document.querySelector("#videoArea").innerHTML = v;
       }
     })
-
-
-  .controller('MyCtrl', function($scope, $ionicHistory) {
-    $scope.myGoBack = function() {
-      $ionicHistory.goBack();
-    };
-  })
-
-  .controller('Watch', function($scope, $stateParams, $state) {
-    $scope.videos = [{
-      spot_id: 1,
-      video_id: 1,
-      name: "Pretty Hate Machine",
-      skater: "Nine Inch Nails",
-      videoUrl: "../img/fly.jpg",
-      points: 0
-    }]
-
-    console.log("watch controller");
-    console.log($stateParams.id);
-
-  })
-
-  .controller('VideoCtrl', function($scope, $cordovaCapture, $http) {
-
-    document.addEventListener("deviceready", init, false);
-
-    function init() {
-
-      document.querySelector("#takeVideo").addEventListener("touchend", function() {
-        console.log("Take video");
-        navigator.device.capture.captureVideo(captureSuccess, captureError, {
-          limit: 1
-        });
-      }, false);
-    }
-
-    function captureError(e) {
-      console.log("capture error: " + JSON.stringify(e));
-    }
-
-    function captureSuccess(s) {
-      console.log(s[0].fullpath);
-      var postObj = {
-        video: s[0].fullpath
-      }
-      $http.post('https://localhost:3000/', postObj)
-
-      var v = "<video controls='controls'>";
-      v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
-      v += "</video>";
-      document.querySelector("#videoArea").innerHTML = v;
-    }
-  })
 })();
