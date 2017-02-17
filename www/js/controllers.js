@@ -132,7 +132,6 @@
         return video.spot_id == $stateParams.id;
       })
 
-
       // $scope.videos.push($scope.allVideos[1])
       // spotById($scope.allVideos, $scope.)
       //  function spotById(videosArray) {

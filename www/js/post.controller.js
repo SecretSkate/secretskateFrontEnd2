@@ -51,8 +51,14 @@
             video_url: `https://s3-us-west-2.amazonaws.com/secretskatevids/${file.name}`,
             date: '2017-01-08'},
             function(data){
-              console.log(file.name);
+              console.log(data);
+              $.post('https://secretskate-backend.herokuapp.com/upload/spots', {
+                video_id: data.id,
+                lat: data.coords.latitude,
+                lng: data.coords.longitude
+              })
             })
+
           } else {
             alert('Could not upload file.');
           }
