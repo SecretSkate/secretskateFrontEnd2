@@ -103,11 +103,20 @@
     })
 
     .controller('Watch', function($scope, $stateParams, $state, $http, $sce) {
-      $scope.videos = []
+      $scope.video = {}
 
       $http.get(`https://secretskate-backend.herokuapp.com/skate-spot/video`)
         .then(function(data) {
-          $scope.videos.push(data.data[$stateParams.id - 4])
+          console.log(data.data);
+          var video = data.data.filter(function(video) {
+            return video.video_id == $stateParams.id
+          })[0]
+          video.video_url = $sce.trustAsResourceUrl(video.video_url)
+          $scope.video = video
+          $("video").each(function() {
+            $(this).get(0).load();
+          })
+
         }).catch(function(response) {
           console.log(response);
         });

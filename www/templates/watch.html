@@ -1,16 +1,15 @@
 <ion-nav-view>
   <ion-view view-title="My Page">
-    <ion-content ng-repeat="video in videos">
+    <ion-content>
       <div class="">
         <h2>{{video.name}}</h2>
-        <h3>{{video.skater}}</h3>
-        <img src="{{video.video_url}}" alt="">
-        <!-- <video width="320" height="240" controls>
+        <!-- <img src="{{video.video_url}}" alt=""> -->
+        <video width="320" height="240" controls>
           <source ng-src="{{video.video_url}}" type="video/mp4">
-        </video> -->
-        <div class="video-container">
+        </video>
+        <!-- <div class="video-container">
           <iframe src="{{video.video_url}}" frameborder="0" width="560" height="315"></iframe>
-        </div>
+        </div> -->
       </div>
     </ion-content>
   </ion-view>
