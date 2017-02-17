@@ -8,19 +8,19 @@
       var url = 'https://secretskate-backend.herokuapp.com'
       var localUrl = 'http://localhost:3000'
 
-      $http.get(`http://localhost:3000/skate-spot`)
-        .then(function(data) {
-          console.log(data);
-        }).catch(function(response) {
-           console.log(response);
-        });
-      // $http.get(`https://secretskate-backend.herokuapp.com`)
+      // $http.get(`http://localhost:3000/skate-spot`)
       //   .then(function(data) {
       //     console.log(data);
-      //
       //   }).catch(function(response) {
-      //     console.log(response);
+      //      console.log(response);
       //   });
+      $http.get(`https://secretskate-backend.herokuapp.com`)
+        .then(function(data) {
+          console.log(data);
+
+        }).catch(function(response) {
+          console.log(response);
+        });
 
 
       // $http({
